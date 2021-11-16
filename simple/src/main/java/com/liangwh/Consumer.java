@@ -26,7 +26,7 @@ public class Consumer {
      */
     public static void main(String[] args) throws Exception{
         final DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("LIANG_CONSUMER_GROUP3");
-        consumer.setNamesrvAddr("127.0.0.1:9876");
+        consumer.setNamesrvAddr(System.getProperty("namesrvAddrs"));
         consumer.subscribe("k2","*");
         /**
          * MessageListenerOrderly 有序初一

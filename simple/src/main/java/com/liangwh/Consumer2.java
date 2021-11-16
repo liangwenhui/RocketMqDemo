@@ -19,7 +19,7 @@ public class Consumer2 {
 
     public static void main(String[] args) throws Exception{
         final DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("LIANG_CONSUMER_GROUP3");
-        consumer.setNamesrvAddr("127.0.0.1:9876");
+        consumer.setNamesrvAddr(System.getProperty("namesrvAddrs"));
         consumer.subscribe("k2","*");
         /**
          * MessageListenerOrderly 有序初一
@@ -41,6 +41,7 @@ public class Consumer2 {
                         System.out.println(sb.toString());
                         //int i= 1/0;
                     }
+//                    ConsumeConcurrentlyStatus.RECONSUME_LATER 重试，稍后消费
                     return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
                 }finally {
                     System.out.println("我草");

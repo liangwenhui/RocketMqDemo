@@ -20,7 +20,7 @@ public class Producer {
     public static void main(String[] args) throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer("LIANG_PRODUCER_GROUP");
 
-        producer.setNamesrvAddr("127.0.0.1:9876");
+        producer.setNamesrvAddr(System.getProperty("namesrvAddrs"));
         producer.setSendMessageWithVIPChannel(false);
         producer.start();
 
